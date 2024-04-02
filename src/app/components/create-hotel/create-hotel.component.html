@@ -1,0 +1,15 @@
+<p-toast></p-toast>
+<p-panel header="Create a new hotel">
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <input type="text" placeholder="Hotel Name" id="name" name="name" pInputText [(ngModel)]="hotel.name" required/>
+    </div>
+    <br/>
+    <div class="form-group">
+      <input type="text" placeholder="Hotel Key" id="key" name="key" pInputText [(ngModel)]="hotel.key" required/>
+    </div>
+    <br/>
+    <p-button type="submit" label="Submit"></p-button>
+    <p-button label="Cancel" severity="warning" (onClick)="backToParent()"></p-button>
+  </form>
+</p-panel>

@@ -1,0 +1,40 @@
+
+<p-toast></p-toast>
+<p-button label="Back to the hotel page" styleClass="mr-1" (onClick)="backToParent()"></p-button><br/><br/>
+<p-panel header="Notification Details {{notification?.id}}">
+  <p>
+    {{notification?.message}}
+  </p>
+  <h3>Performance</h3>
+  Please select the period to filter(default D+5)
+  <div class="card flex flex-column md:flex-row md:justify-content-between row-gap-1">
+    <p-calendar [(ngModel)]="rangeDates" selectionMode="range" [readonlyInput]="true"></p-calendar>
+    &nbsp; &nbsp;
+    <p-button label="Refresh" icon="pi pi-refresh" styleClass="mr-1" (onClick)="getCurrentNotificationPerformance()"></p-button>
+  </div>
+  <br/>
+
+
+  <div class="card flex flex-column md:flex-row md:justify-content-between row-gap-1">
+    <h4></h4>
+    <p-badge [value]="'CTR : ' + notificationPerformance?.ctr?.toString()" size="large" severity="warning"></p-badge>
+    &nbsp; &nbsp;
+    <p-badge [value]="'CVR: ' + notificationPerformance?.cvr?.toString()" size="large" severity="success"></p-badge>
+  </div>
+  <br/>
+  <i><b>CTR</b> : Clicks/Impressions</i><br/>
+  <i><b>CVR</b> : Conversions/Impressions</i>
+
+</p-panel>
+
+<br/>
+<p-panel header="Notification interaction Simulation" [toggleable]="true">
+  <div class="card flex flex-column md:flex-row md:justify-content-between row-gap-1">
+    <p-button label="Click"  icon="pi pi-plus" [badge]="notificationPerformance?.clicks?.toString()" styleClass="mr-1" (onClick)="addClick()"></p-button>
+    &nbsp; &nbsp;
+    <p-button label="Impression" icon="pi pi-plus" [badge]="notificationPerformance?.impressions?.toString()" styleClass="mr-1" (onClick)="addImpression()"></p-button>
+    &nbsp; &nbsp;
+    <p-button label="Conversion" icon="pi pi-plus" [badge]="notificationPerformance?.conversions?.toString()" styleClass="mr-2" (onClick)="addConversion()"></p-button>
+  </div>
+</p-panel>
+

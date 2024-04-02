@@ -1,0 +1,12 @@
+<p-toast></p-toast>
+<p-panel header="Create a new Notification for hotel">
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <input type="text" placeholder="Notification Message" id="message" name="message" pInputText [(ngModel)]="notification.message" required/>
+    </div>
+    <br/>
+    <br/>
+    <p-button type="submit" label="Submit"></p-button>
+    <p-button label="Cancel" severity="warning" (onClick)="backToParent()"></p-button>
+  </form>
+</p-panel>

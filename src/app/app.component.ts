@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Hotel} from "./domain/hotel.model";
+import {HotelService} from "./service/hotel.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',

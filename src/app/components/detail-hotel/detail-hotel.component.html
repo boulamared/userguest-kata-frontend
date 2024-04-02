@@ -1,0 +1,33 @@
+<p-toast></p-toast>
+<p-button label="Back to the hotels" styleClass="mr-1" (onClick)="backToParent()"></p-button>
+<br/><br/>
+<p-panel header="Hotel details {{hotel?.name}}">
+  <br/>
+  <p-table [value]="notifications" selectionMode="single" [(selection)]="selectedNotification" dataKey="id"
+           (onRowSelect)="onRowSelect($event)" [tableStyle]="{'min-width': '50rem'}">
+    <ng-template pTemplate="header">
+      <H3>Notifications</H3>
+      <tr>
+        <th>Id</th>
+        <th>Content</th>
+        <th>Created At</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="footer">
+      <div class="flex flex-wrap align-items-center justify-content-between gap-3">
+        <div class="flex align-items-center gap-2">
+          <p-button icon="pi pi-plus" [rounded]="true" [text]="true" (onClick)="goToCreate()"></p-button>
+        </div>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="body" let-notification>
+      <tr [pSelectableRow]="notification">
+        <td>{{notification.id}}</td>
+        <td>{{notification.message}}</td>
+        <td>{{notification.createdAt | date }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</p-panel>
+
+

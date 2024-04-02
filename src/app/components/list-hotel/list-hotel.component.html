@@ -1,0 +1,36 @@
+<p-panel>
+  <ng-template pTemplate="header">
+    <div class="flex align-items-center gap-2">
+      <span class="font-bold">List of Hotels</span>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="footer">
+    <div class="flex flex-wrap align-items-center justify-content-between gap-3">
+      <div class="flex align-items-center gap-2">
+        <p-button icon="pi pi-plus" [rounded]="true" [text]="true" (onClick)="goToCreate()"></p-button>
+      </div>
+    </div>
+  </ng-template>
+  <p class="m-0">
+    <ng-container *ngIf="hotels">
+      <p-table [value]="hotels" selectionMode="single" (onRowSelect)="onRowSelect($event)" [(selection)]="selectedHotel" dataKey="id" [tableStyle]="{'min-width': '50rem'}">
+        <ng-template pTemplate="header" let-columns>
+          <tr>
+            <th>ID </th>
+            <th>Name</th>
+            <th>Key</th>
+            <th>Count Notification</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-hotel let-columns="columns">
+          <tr [pSelectableRow]="hotel">
+            <td>{{hotel.id}}</td>
+            <td>{{hotel.name}}</td>
+            <td><p-badge [value]="hotel.key" severity="success"></p-badge></td>
+            <td><p-badge value="0" severity="warning"></p-badge></td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </ng-container>
+  </p>
+</p-panel>
